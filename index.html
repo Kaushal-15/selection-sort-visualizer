@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Price Sorter: Selection Sort Visualizer</title>
-  <meta name="description" content="Interactive Selection Sort Visualizer for an online shopping app. Trace price sorting step by step with animations, metrics, worked examples, and C code.">
-  
+  <meta name="description"
+    content="Interactive Selection Sort Visualizer for an online shopping app. Trace price sorting step by step with animations, metrics, worked examples, and C code.">
+
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <!-- Sticky Top Navigation -->
   <header class="site-header" id="navbar">
     <div class="nav-container">
       <a href="#hero" class="brand" aria-label="Product Price Sorter Home">
         <span class="brand-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
             <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
             <path d="M3 6h18"></path>
             <path d="M16 10a4 4 0 0 1-8 0"></path>
@@ -41,6 +47,16 @@
       </nav>
 
       <div class="nav-actions">
+        <!-- Developer Badge in Nav -->
+        <a href="https://github.com/Kaushal-15" target="_blank" rel="noopener noreferrer" class="dev-badge-pill"
+          aria-label="Developer GitHub Profile: Kaushal-15" title="Developer GitHub: Kaushal-15">
+          <svg class="dev-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+          </svg>
+          <span class="dev-name">Developer</span>
+        </a>
+
         <!-- Theme Toggle -->
         <button id="themeToggle" class="btn-icon" aria-label="Toggle dark/light theme" title="Toggle Theme">
           <span class="theme-icon light-icon" aria-hidden="true">☀️</span>
@@ -56,22 +72,35 @@
     <section class="hero-section" id="hero">
       <div class="hero-glow-bg" aria-hidden="true"></div>
       <div class="container hero-content">
-        <div class="badge hero-badge">
-          <span class="pulse-dot"></span> Online Shopping Price Sorter &bull; Selection Sort
+        <div class="hero-badges-row">
+          <div class="badge hero-badge">
+            <span class="pulse-dot"></span> Online Shopping Price Sorter &bull; Selection Sort
+          </div>
+          <a href="https://github.com/Kaushal-15" target="_blank" rel="noopener noreferrer" class="badge dev-hero-badge"
+            title="Developer GitHub Profile">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+            <span>Developer: <strong>Kaushal-15</strong></span>
+            <span class="external-arrow">↗</span>
+          </a>
         </div>
         <h1 class="hero-title">
           Product Price Sorter: <br>
           <span class="gradient-text">Selection Sort Visualizer</span>
         </h1>
         <p class="hero-desc">
-          Step inside an e-commerce checkout engine. Watch how Selection Sort scans through unorganized product price tags, pinpoints the smallest price in every pass, and places items into ascending order step by step.
+          Step inside an e-commerce checkout engine. Watch how Selection Sort scans through unorganized product price
+          tags, pinpoints the smallest price in every pass, and places items into ascending order step by step.
         </p>
 
         <div class="hero-cta-group">
           <a href="#visualizerWorkstation" class="btn btn-primary btn-lg">
             <span>Start Visualizing</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m9 18 6-6-6-6"/>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 18 6-6-6-6" />
             </svg>
           </a>
           <a href="#principle" class="btn btn-secondary btn-lg">
@@ -111,7 +140,8 @@
           <span class="section-tag">Algorithm Basics</span>
           <h2 class="section-title">How Selection Sort Works</h2>
           <p class="section-subtitle">
-            Selection Sort divides the array into two logical sections: a <strong>sorted sublist</strong> built from left to right, and an <strong>unsorted sublist</strong> occupying the rest of the array.
+            Selection Sort divides the array into two logical sections: a <strong>sorted sublist</strong> built from
+            left to right, and an <strong>unsorted sublist</strong> occupying the rest of the array.
           </p>
         </div>
 
@@ -126,7 +156,9 @@
             </div>
             <h3>Scan Unsorted Prices</h3>
             <p>
-              In pass <code>i</code> (from 0 to <code>n - 2</code>), start by assuming the element at index <code>i</code> is the minimum. Then scan elements from index <code>j = i + 1</code> to <code>n - 1</code> to search for any smaller price.
+              In pass <code>i</code> (from 0 to <code>n - 2</code>), start by assuming the element at index
+              <code>i</code> is the minimum. Then scan elements from index <code>j = i + 1</code> to <code>n - 1</code>
+              to search for any smaller price.
             </p>
           </div>
 
@@ -139,7 +171,8 @@
             </div>
             <h3>Identify the Minimum</h3>
             <p>
-              Whenever an item with a price lower than the current minimum candidate is discovered, update the minimum index record <code>minIndex = j</code>. Continue scanning until the end of the array.
+              Whenever an item with a price lower than the current minimum candidate is discovered, update the minimum
+              index record <code>minIndex = j</code>. Continue scanning until the end of the array.
             </p>
           </div>
 
@@ -155,7 +188,9 @@
             </div>
             <h3>Swap to Sorted Boundary</h3>
             <p>
-              After scanning, if <code>minIndex ≠ i</code>, swap <code>array[i]</code> with <code>array[minIndex]</code>. If the minimum is already at index <code>i</code>, skip the swap. Index <code>i</code> is now permanently sorted!
+              After scanning, if <code>minIndex ≠ i</code>, swap <code>array[i]</code> with
+              <code>array[minIndex]</code>. If the minimum is already at index <code>i</code>, skip the swap. Index
+              <code>i</code> is now permanently sorted!
             </p>
           </div>
 
@@ -169,7 +204,8 @@
             </div>
             <h3>Repeat for n - 1 Passes</h3>
             <p>
-              Advance the sorted partition boundary by one. Repeat the process for <code>n - 1</code> passes. When only one element remains at the end, it is guaranteed to be in its correct place.
+              Advance the sorted partition boundary by one. Repeat the process for <code>n - 1</code> passes. When only
+              one element remains at the end, it is guaranteed to be in its correct place.
             </p>
           </div>
         </div>
@@ -217,7 +253,8 @@
           <span class="section-tag">Interactive Simulation</span>
           <h2 class="section-title">Selection Sort Visualizer</h2>
           <p class="section-subtitle">
-            Observe Selection Sort in real time. The play controls, live step trace, and interactive bar chart are unified below for immediate step-by-step playback.
+            Observe Selection Sort in real time. The play controls, live step trace, and interactive bar chart are
+            unified below for immediate step-by-step playback.
           </p>
         </div>
 
@@ -228,36 +265,60 @@
           <div class="workstation-top-bar">
             <!-- Playback Button Group -->
             <div class="playback-buttons" role="group" aria-label="Playback Controls">
-              <button type="button" class="btn btn-ctrl btn-play-pause" id="btnPlayPause" aria-label="Play or Pause" title="Play / Pause (Spacebar)">
+              <button type="button" class="btn btn-ctrl btn-play-pause" id="btnPlayPause" aria-label="Play or Pause"
+                title="Play / Pause (Spacebar)">
                 <span class="play-icon" id="playIcon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
                 </span>
                 <span class="pause-icon" id="pauseIcon" style="display:none;">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="6" y="4" width="4" height="16"></rect>
+                    <rect x="14" y="4" width="4" height="16"></rect>
+                  </svg>
                 </span>
                 <span id="playPauseText">Play</span>
               </button>
 
-              <button type="button" class="btn btn-ctrl" id="btnPrevStep" aria-label="Previous step" title="Previous step (Left Arrow)">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="19 20 9 12 19 4 19 20"></polygon></svg>
+              <button type="button" class="btn btn-ctrl" id="btnPrevStep" aria-label="Previous step"
+                title="Previous step (Left Arrow)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <polygon points="19 20 9 12 19 4 19 20"></polygon>
+                </svg>
                 <span class="btn-ctrl-label">Prev</span>
               </button>
 
-              <button type="button" class="btn btn-ctrl" id="btnNextStep" aria-label="Next step" title="Next step (Right Arrow)">
+              <button type="button" class="btn btn-ctrl" id="btnNextStep" aria-label="Next step"
+                title="Next step (Right Arrow)">
                 <span class="btn-ctrl-label">Next</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="5 4 15 12 5 20 5 4"></polygon></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                </svg>
               </button>
 
-              <button type="button" class="btn btn-ctrl" id="btnJumpStart" aria-label="Jump to start" title="Jump to start">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5"></line></svg>
+              <button type="button" class="btn btn-ctrl" id="btnJumpStart" aria-label="Jump to start"
+                title="Jump to start">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <polygon points="19 20 9 12 19 4 19 20"></polygon>
+                  <line x1="5" y1="19" x2="5" y2="5"></line>
+                </svg>
               </button>
 
-              <button type="button" class="btn btn-ctrl" id="btnJumpEnd" aria-label="Jump to end" title="Jump to finished state">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
+              <button type="button" class="btn btn-ctrl" id="btnJumpEnd" aria-label="Jump to end"
+                title="Jump to finished state">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                  <line x1="19" y1="5" x2="19" y2="19"></line>
+                </svg>
               </button>
 
-              <button type="button" class="btn btn-ctrl btn-reset" id="btnResetVisualizer" aria-label="Reset visualizer" title="Reset (R)">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+              <button type="button" class="btn btn-ctrl btn-reset" id="btnResetVisualizer" aria-label="Reset visualizer"
+                title="Reset (R)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                  <path d="M3 3v5h5"></path>
+                </svg>
                 <span>Reset</span>
               </button>
             </div>
@@ -270,15 +331,20 @@
               </label>
               <div class="slider-row">
                 <span class="slider-edge-label">Slow</span>
-                <input type="range" id="speedSlider" min="100" max="1500" step="50" value="600" aria-label="Animation speed in milliseconds">
+                <input type="range" id="speedSlider" min="100" max="1500" step="50" value="600"
+                  aria-label="Animation speed in milliseconds">
                 <span class="slider-edge-label">Fast</span>
               </div>
             </div>
 
             <!-- Toggle Dataset Customization Drawer Button -->
             <div class="workstation-config-btn-wrap">
-              <button type="button" class="btn btn-secondary btn-sm" id="btnToggleInputDrawer" aria-expanded="false" aria-controls="inputDrawer">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+              <button type="button" class="btn btn-secondary btn-sm" id="btnToggleInputDrawer" aria-expanded="false"
+                aria-controls="inputDrawer">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 20h9"></path>
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                </svg>
                 <span id="toggleInputBtnText">Edit Prices</span>
               </button>
             </div>
@@ -286,7 +352,8 @@
 
           <!-- Progress Bar & Step Info Strip -->
           <div class="workstation-progress-strip">
-            <div class="progress-bar-track" id="progressBarTrack" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar-track" id="progressBarTrack" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+              aria-valuemax="100">
               <div class="progress-bar-fill" id="progressBarFill" style="width: 0%;"></div>
             </div>
             <div class="progress-info-sub">
@@ -309,7 +376,10 @@
               <!-- Overlay that blocks inputs when sorting is running -->
               <div class="input-block-overlay" id="inputBlockOverlay" style="display: none;">
                 <div class="block-badge">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
                   <span>Inputs are blocked while sorting is active. Pause or Reset to edit.</span>
                 </div>
               </div>
@@ -333,15 +403,9 @@
                   </label>
                   <div class="input-with-icon">
                     <span class="currency-symbol">₹</span>
-                    <input 
-                      type="text" 
-                      id="priceInput" 
-                      class="form-control" 
-                      value="799, 349, 1299, 149, 599" 
-                      placeholder="Enter prices, e.g. 799, 349, 1299, 149, 599"
-                      autocomplete="off"
-                      aria-describedby="inputErrorMsg"
-                    >
+                    <input type="text" id="priceInput" class="form-control" value="799, 349, 1299, 149, 599"
+                      placeholder="Enter prices, e.g. 799, 349, 1299, 149, 599" autocomplete="off"
+                      aria-describedby="inputErrorMsg">
                   </div>
                   <div id="inputErrorMsg" class="error-msg" role="alert" aria-live="polite"></div>
                 </div>
@@ -351,31 +415,32 @@
                     <span>Product Names (Optional, Comma-separated)</span>
                     <span class="label-hint">Leave blank for default "Product A, B..."</span>
                   </label>
-                  <input 
-                    type="text" 
-                    id="productNamesInput" 
-                    class="form-control" 
+                  <input type="text" id="productNamesInput" class="form-control"
                     value="T-Shirt, Mouse, Earbuds, Cable, Watch"
-                    placeholder="e.g. T-Shirt, Mouse, Earbuds, Cable, Watch"
-                    autocomplete="off"
-                  >
+                    placeholder="e.g. T-Shirt, Mouse, Earbuds, Cable, Watch" autocomplete="off">
                 </div>
               </div>
 
               <!-- Quick Action Preset Buttons -->
               <div class="action-buttons-strip">
                 <div class="preset-buttons" role="group" aria-label="Sample Presets">
-                  <button type="button" class="btn btn-chip" id="btnPresetDefault" title="Load worked example (5 items)">Sample (5 items)</button>
-                  <button type="button" class="btn btn-chip" id="btnPresetRandom" title="Generate random product prices">Randomize</button>
-                  <button type="button" class="btn btn-chip" id="btnPresetSorted" title="Already sorted prices (Best case for swaps)">Already Sorted</button>
-                  <button type="button" class="btn btn-chip" id="btnPresetReversed" title="Reverse sorted prices">Reverse Sorted</button>
-                  <button type="button" class="btn btn-chip" id="btnPresetDuplicates" title="Prices with duplicates (Demonstrates stability)">With Duplicates</button>
+                  <button type="button" class="btn btn-chip" id="btnPresetDefault"
+                    title="Load worked example (5 items)">Sample (5 items)</button>
+                  <button type="button" class="btn btn-chip" id="btnPresetRandom"
+                    title="Generate random product prices">Randomize</button>
+                  <button type="button" class="btn btn-chip" id="btnPresetSorted"
+                    title="Already sorted prices (Best case for swaps)">Already Sorted</button>
+                  <button type="button" class="btn btn-chip" id="btnPresetReversed"
+                    title="Reverse sorted prices">Reverse Sorted</button>
+                  <button type="button" class="btn btn-chip" id="btnPresetDuplicates"
+                    title="Prices with duplicates (Demonstrates stability)">With Duplicates</button>
                 </div>
-                
+
                 <div class="submit-buttons">
                   <button type="button" class="btn btn-outline btn-sm" id="btnClearInput">Clear</button>
                   <button type="button" class="btn btn-primary btn-sm" id="btnApplyInput">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.5">
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                     Apply & Visualize
@@ -408,7 +473,8 @@
 
             <!-- Live Explanation sentence -->
             <div class="step-description-box" id="stepDescriptionBox" aria-live="polite">
-              <p id="stepDescriptionText">Click <strong>Play</strong> or <strong>Next Step</strong> to start visualizing the Selection Sort algorithm on product prices.</p>
+              <p id="stepDescriptionText">Click <strong>Play</strong> or <strong>Next Step</strong> to start visualizing
+                the Selection Sort algorithm on product prices.</p>
             </div>
           </div>
 
@@ -430,8 +496,10 @@
             <!-- Color Legend -->
             <div class="visualizer-legend" aria-label="Color Legend">
               <div class="legend-item"><span class="legend-swatch swatch-default"></span><span>Unsorted</span></div>
-              <div class="legend-item"><span class="legend-swatch swatch-target"></span><span>Target Slot (i)</span></div>
-              <div class="legend-item"><span class="legend-swatch swatch-scanning"></span><span>Scanning (j)</span></div>
+              <div class="legend-item"><span class="legend-swatch swatch-target"></span><span>Target Slot (i)</span>
+              </div>
+              <div class="legend-item"><span class="legend-swatch swatch-scanning"></span><span>Scanning (j)</span>
+              </div>
               <div class="legend-item"><span class="legend-swatch swatch-min"></span><span>Min Candidate</span></div>
               <div class="legend-item"><span class="legend-swatch swatch-swapping"></span><span>Swapping</span></div>
               <div class="legend-item"><span class="legend-swatch swatch-sorted"></span><span>Sorted</span></div>
@@ -440,7 +508,8 @@
             <!-- "No Swap Needed" Alert Toast -->
             <div id="noSwapToast" class="no-swap-toast" aria-hidden="true">
               <span class="toast-icon">ℹ️</span>
-              <span class="toast-text">No swap needed — minimum price is already at index <span id="noSwapIndex">i</span>!</span>
+              <span class="toast-text">No swap needed — minimum price is already at index <span
+                  id="noSwapIndex">i</span>!</span>
             </div>
 
             <!-- Main Bar Chart Container (ALWAYS VISIBLE WITH CONTROLS!) -->
@@ -482,61 +551,61 @@
 
         <!-- DETAILED AUDIT PANELS (STEP LOG & PASS TABLE) -->
         <div class="trace-tables-split">
-            <!-- STEP-BY-STEP AUDIT LOG -->
-            <div class="panel step-log-panel">
-              <div class="panel-header-mini">
-                <h4>Algorithm Action Log</h4>
-                <span class="log-hint">Click any step to jump</span>
-              </div>
-              <div class="step-log-scrollable" id="stepLogList" role="feed" aria-label="Chronological step execution log">
-                <!-- Log entries inserted by script.js -->
-              </div>
+          <!-- STEP-BY-STEP AUDIT LOG -->
+          <div class="panel step-log-panel">
+            <div class="panel-header-mini">
+              <h4>Algorithm Action Log</h4>
+              <span class="log-hint">Click any step to jump</span>
             </div>
-
-            <!-- PASS-BY-PASS TRACE TABLE -->
-            <div class="panel pass-table-panel">
-              <div class="panel-header-mini">
-                <h4>Pass-by-Pass Trace Table</h4>
-                <span class="table-counter" id="passTableCountBadge">0 Passes Recorded</span>
-              </div>
-              <div class="table-responsive">
-                <table class="pass-trace-table" id="passTraceTable">
-                  <thead>
-                    <tr>
-                      <th scope="col">Pass #</th>
-                      <th scope="col">Unsorted Range</th>
-                      <th scope="col">Minimum Found</th>
-                      <th scope="col">Swap Performed</th>
-                      <th scope="col">Array After Pass</th>
-                    </tr>
-                  </thead>
-                  <tbody id="passTraceTableBody">
-                    <tr class="empty-row">
-                      <td colspan="5">No passes completed yet. Run the visualizer to populate the trace table.</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            <div class="step-log-scrollable" id="stepLogList" role="feed" aria-label="Chronological step execution log">
+              <!-- Log entries inserted by script.js -->
             </div>
           </div>
 
-          <!-- SORTED PRODUCT SHOWCASE (VISIBLE WHEN FINISHED) -->
-          <div class="panel sorted-products-card" id="sortedProductsCard" style="display:none;">
-            <div class="showcase-header">
-              <div class="showcase-title-wrap">
-                <span class="celebration-icon">🎉</span>
-                <div>
-                  <h3>Catalog Sorted Successfully!</h3>
-                  <p>All product prices are arranged in ascending order, ready for online shoppers.</p>
-                </div>
-              </div>
-              <button type="button" class="btn btn-outline btn-sm" id="btnRestartShowcase">Sort Again</button>
+          <!-- PASS-BY-PASS TRACE TABLE -->
+          <div class="panel pass-table-panel">
+            <div class="panel-header-mini">
+              <h4>Pass-by-Pass Trace Table</h4>
+              <span class="table-counter" id="passTableCountBadge">0 Passes Recorded</span>
             </div>
-            <div class="product-cards-grid" id="sortedProductsGrid">
-              <!-- Rendered dynamically -->
+            <div class="table-responsive">
+              <table class="pass-trace-table" id="passTraceTable">
+                <thead>
+                  <tr>
+                    <th scope="col">Pass #</th>
+                    <th scope="col">Unsorted Range</th>
+                    <th scope="col">Minimum Found</th>
+                    <th scope="col">Swap Performed</th>
+                    <th scope="col">Array After Pass</th>
+                  </tr>
+                </thead>
+                <tbody id="passTraceTableBody">
+                  <tr class="empty-row">
+                    <td colspan="5">No passes completed yet. Run the visualizer to populate the trace table.</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
+
+        <!-- SORTED PRODUCT SHOWCASE (VISIBLE WHEN FINISHED) -->
+        <div class="panel sorted-products-card" id="sortedProductsCard" style="display:none;">
+          <div class="showcase-header">
+            <div class="showcase-title-wrap">
+              <span class="celebration-icon">🎉</span>
+              <div>
+                <h3>Catalog Sorted Successfully!</h3>
+                <p>All product prices are arranged in ascending order, ready for online shoppers.</p>
+              </div>
+            </div>
+            <button type="button" class="btn btn-outline btn-sm" id="btnRestartShowcase">Sort Again</button>
+          </div>
+          <div class="product-cards-grid" id="sortedProductsGrid">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+      </div>
       </div>
     </section>
 
@@ -547,7 +616,8 @@
           <span class="section-tag">Manual Walkthrough</span>
           <h2 class="section-title">Worked Example: Step-by-Step Trace</h2>
           <p class="section-subtitle">
-            Let's trace Selection Sort manually on the shopping price list <code>[799, 349, 1299, 149, 599]</code> with $n = 5$ items and $n - 1 = 4$ passes.
+            Let's trace Selection Sort manually on the shopping price list <code>[799, 349, 1299, 149, 599]</code> with
+            $n = 5$ items and $n - 1 = 4$ passes.
           </p>
         </div>
 
@@ -564,7 +634,9 @@
           </div>
           <button type="button" class="btn btn-primary btn-sm" id="btnLoadWorkedExample">
             <span>Load This in Visualizer</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
           </button>
         </div>
 
@@ -706,9 +778,12 @@
         <div class="example-takeaway-box">
           <h4>Key Observations from This Trace:</h4>
           <ul>
-            <li><strong>Total Passes:</strong> $n - 1 = 5 - 1 = 4$ passes were needed. Once the first 4 elements were placed in their sorted slots, the 5th element ($1299$) was automatically in the final spot.</li>
-            <li><strong>Total Comparisons:</strong> Pass 1 made 4 comparisons; Pass 2 made 3; Pass 3 made 2; Pass 4 made 1. Total $= 4 + 3 + 2 + 1 = 10 = \frac{5 \times 4}{2}$.</li>
-            <li><strong>Total Swaps:</strong> Only 2 physical swaps occurred (Pass 1 and Pass 3). Passes 2 and 4 required zero swaps.</li>
+            <li><strong>Total Passes:</strong> $n - 1 = 5 - 1 = 4$ passes were needed. Once the first 4 elements were
+              placed in their sorted slots, the 5th element ($1299$) was automatically in the final spot.</li>
+            <li><strong>Total Comparisons:</strong> Pass 1 made 4 comparisons; Pass 2 made 3; Pass 3 made 2; Pass 4 made
+              1. Total $= 4 + 3 + 2 + 1 = 10 = \frac{5 \times 4}{2}$.</li>
+            <li><strong>Total Swaps:</strong> Only 2 physical swaps occurred (Pass 1 and Pass 3). Passes 2 and 4
+              required zero swaps.</li>
           </ul>
         </div>
       </div>
@@ -721,7 +796,8 @@
           <span class="section-tag">Implementation</span>
           <h2 class="section-title">C Program: Selection Sort for Product Prices</h2>
           <p class="section-subtitle">
-            A production-ready C program that reads the number of products $n$ and their prices, sorts them in ascending order using Selection Sort, prints the array state after each pass, and outputs the final sorted catalog.
+            A production-ready C program that reads the number of products $n$ and their prices, sorts them in ascending
+            order using Selection Sort, prints the array state after each pass, and outputs the final sorted catalog.
           </p>
         </div>
 
@@ -884,7 +960,8 @@ Final Sorted Product Prices (Ascending):
           <span class="section-tag">Theoretical & Real-World Evaluation</span>
           <h2 class="section-title">Complexity Analysis</h2>
           <p class="section-subtitle">
-            An in-depth breakdown of Selection Sort's asymptotic time complexity, space requirements, comparison counts, swap bounds, and stability characteristics.
+            An in-depth breakdown of Selection Sort's asymptotic time complexity, space requirements, comparison counts,
+            swap bounds, and stability characteristics.
           </p>
         </div>
 
@@ -902,7 +979,8 @@ Final Sorted Product Prices (Ascending):
               <tr>
                 <td><strong>Best-Case Time</strong></td>
                 <td><span class="badge-complexity">O(n²)</span></td>
-                <td>Even if the array is already sorted, the algorithm still compares every pair in the unsorted range to find the minimum.</td>
+                <td>Even if the array is already sorted, the algorithm still compares every pair in the unsorted range
+                  to find the minimum.</td>
               </tr>
               <tr>
                 <td><strong>Average-Case Time</strong></td>
@@ -912,27 +990,33 @@ Final Sorted Product Prices (Ascending):
               <tr>
                 <td><strong>Worst-Case Time</strong></td>
                 <td><span class="badge-complexity">O(n²)</span></td>
-                <td>Occurs when array is reverse sorted; still performs exactly $\sum_{i=1}^{n-1} i = \frac{n(n-1)}{2}$ comparisons.</td>
+                <td>Occurs when array is reverse sorted; still performs exactly $\sum_{i=1}^{n-1} i = \frac{n(n-1)}{2}$
+                  comparisons.</td>
               </tr>
               <tr>
                 <td><strong>Auxiliary Space</strong></td>
                 <td><span class="badge-complexity badge-green">O(1)</span></td>
-                <td>In-place algorithm. Only requires a few primitive pointer variables (<code>i</code>, <code>j</code>, <code>minIndex</code>, <code>temp</code>).</td>
+                <td>In-place algorithm. Only requires a few primitive pointer variables (<code>i</code>, <code>j</code>,
+                  <code>minIndex</code>, <code>temp</code>).
+                </td>
               </tr>
               <tr>
                 <td><strong>Total Comparisons</strong></td>
                 <td><span class="badge-complexity">n(n - 1) / 2</span></td>
-                <td>Fixed for any input of size $n$: $(n-1) + (n-2) + \dots + 1 = \frac{n(n-1)}{2}$. Independent of input order.</td>
+                <td>Fixed for any input of size $n$: $(n-1) + (n-2) + \dots + 1 = \frac{n(n-1)}{2}$. Independent of
+                  input order.</td>
               </tr>
               <tr>
                 <td><strong>Total Swaps</strong></td>
                 <td><span class="badge-complexity badge-green">At most n - 1</span></td>
-                <td>At most 1 swap per pass. Best case is <strong>0 swaps</strong> (when array is already sorted). Much fewer writes than Bubble Sort ($O(n^2)$ swaps).</td>
+                <td>At most 1 swap per pass. Best case is <strong>0 swaps</strong> (when array is already sorted). Much
+                  fewer writes than Bubble Sort ($O(n^2)$ swaps).</td>
               </tr>
               <tr>
                 <td><strong>Stability</strong></td>
                 <td><span class="badge-complexity badge-amber">Not Stable</span></td>
-                <td>Long-range swaps can reverse the relative order of duplicate elements. (See detailed stability proof below).</td>
+                <td>Long-range swaps can reverse the relative order of duplicate elements. (See detailed stability proof
+                  below).</td>
               </tr>
               <tr>
                 <td><strong>Algorithm Type</strong></td>
@@ -950,7 +1034,8 @@ Final Sorted Product Prices (Ascending):
               <span class="live-pulse-dot"></span>
               <h3>Live Visualizer Run vs. Theoretical Bounds</h3>
             </div>
-            <span class="comp-note">Reflects dataset currently loaded in visualizer (n = <span id="compArraySize">5</span>)</span>
+            <span class="comp-note">Reflects dataset currently loaded in visualizer (n = <span
+                id="compArraySize">5</span>)</span>
           </div>
 
           <div class="comp-comparison-grid">
@@ -995,10 +1080,13 @@ Final Sorted Product Prices (Ascending):
               <h3>Why is Selection Sort Not Stable?</h3>
             </div>
             <p>
-              A sorting algorithm is <strong>stable</strong> if it preserves the relative original order of items with identical keys (equal values).
+              A sorting algorithm is <strong>stable</strong> if it preserves the relative original order of items with
+              identical keys (equal values).
             </p>
             <p>
-              Selection sort makes <em>long-range swaps</em> across several elements. Consider two identical product prices: <strong>Product A (₹499)</strong> at index 0 and <strong>Product B (₹499)</strong> at index 1, followed by <strong>Product C (₹199)</strong> at index 2:
+              Selection sort makes <em>long-range swaps</em> across several elements. Consider two identical product
+              prices: <strong>Product A (₹499)</strong> at index 0 and <strong>Product B (₹499)</strong> at index 1,
+              followed by <strong>Product C (₹199)</strong> at index 2:
             </p>
 
             <div class="stability-example-box">
@@ -1012,7 +1100,8 @@ Final Sorted Product Prices (Ascending):
               </div>
               <div class="stability-step">
                 <span class="sstep-label">Pass 1:</span>
-                <span class="sstep-text">Min is ₹199 at index 2. Swap <code>index 0</code> with <code>index 2</code>.</span>
+                <span class="sstep-text">Min is ₹199 at index 2. Swap <code>index 0</code> with
+                  <code>index 2</code>.</span>
               </div>
               <div class="stability-step">
                 <span class="sstep-label">Result Array:</span>
@@ -1025,7 +1114,9 @@ Final Sorted Product Prices (Ascending):
             </div>
 
             <p class="stability-conclusion">
-              Notice that <strong>Product B (₹499)</strong> now appears <em>before</em> <strong>Product A (₹499)</strong>! Their original relative order was inverted, proving that Selection Sort is <strong>unstable</strong>.
+              Notice that <strong>Product B (₹499)</strong> now appears <em>before</em> <strong>Product A
+                (₹499)</strong>! Their original relative order was inverted, proving that Selection Sort is
+              <strong>unstable</strong>.
             </p>
           </div>
 
@@ -1036,20 +1127,27 @@ Final Sorted Product Prices (Ascending):
               <h3>When Should You Use Selection Sort?</h3>
             </div>
             <p>
-              While $O(n^2)$ time makes Selection Sort inefficient for large datasets compared to Quick Sort or Merge Sort ($O(n \log n)$), it offers distinct physical advantages:
+              While $O(n^2)$ time makes Selection Sort inefficient for large datasets compared to Quick Sort or Merge
+              Sort ($O(n \log n)$), it offers distinct physical advantages:
             </p>
             <ul class="pros-cons-list">
               <li>
-                <strong>Minimal Memory Writes ($O(n)$ swaps):</strong> Selection Sort makes at most $n - 1$ swaps. When memory write cycles are physically costly (such as in Flash memory, EEPROM, or solid-state devices with limited write endurance), Selection Sort outperforms algorithms like Insertion Sort or Bubble Sort which execute up to $O(n^2)$ write cycles.
+                <strong>Minimal Memory Writes ($O(n)$ swaps):</strong> Selection Sort makes at most $n - 1$ swaps. When
+                memory write cycles are physically costly (such as in Flash memory, EEPROM, or solid-state devices with
+                limited write endurance), Selection Sort outperforms algorithms like Insertion Sort or Bubble Sort which
+                execute up to $O(n^2)$ write cycles.
               </li>
               <li>
-                <strong>Strict $O(1)$ Memory Overhead:</strong> Performs strictly in-place with zero additional heap allocation, making it suitable for severely constrained microcontrollers and embedded firmware.
+                <strong>Strict $O(1)$ Memory Overhead:</strong> Performs strictly in-place with zero additional heap
+                allocation, making it suitable for severely constrained microcontrollers and embedded firmware.
               </li>
               <li>
-                <strong>Small Datasets & Simplicity:</strong> For very small arrays (e.g. $n \le 15$), the overhead of recursive calls in Merge Sort / Quick Sort makes simple iterative sorts competitive and easier to audit.
+                <strong>Small Datasets & Simplicity:</strong> For very small arrays (e.g. $n \le 15$), the overhead of
+                recursive calls in Merge Sort / Quick Sort makes simple iterative sorts competitive and easier to audit.
               </li>
               <li>
-                <strong>Pedagogical Value:</strong> Ideal for introducing partition-based sorting, loop invariants, and algorithm efficiency metrics.
+                <strong>Pedagogical Value:</strong> Ideal for introducing partition-based sorting, loop invariants, and
+                algorithm efficiency metrics.
               </li>
             </ul>
           </div>
@@ -1073,7 +1171,8 @@ Final Sorted Product Prices (Ascending):
           <span class="footer-brand-title">Product Price Sorter</span>
         </div>
         <p class="footer-tagline">
-          Selection Sort Interactive Learning Platform &bull; Built with pure HTML5, CSS3, and Vanilla JavaScript. No frameworks or external dependencies.
+          Selection Sort Interactive Learning Platform &bull; Built with pure HTML5, CSS3, and Vanilla JavaScript. No
+          frameworks or external dependencies.
         </p>
       </div>
 
@@ -1091,9 +1190,21 @@ Final Sorted Product Prices (Ascending):
 
       <div class="footer-team-col">
         <h5 class="footer-heading">Project Credits</h5>
-        <div class="team-badge">Team 8</div>
+        <div class="footer-badges-group">
+          <div class="team-badge">Team 8</div>
+          <a href="https://github.com/Kaushal-15" target="_blank" rel="noopener noreferrer" class="dev-badge-footer"
+            title="Visit Developer's GitHub Profile">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+            <span>Developer</span>
+            <span class="external-arrow">↗</span>
+          </a>
+        </div>
         <p class="team-desc">
-          Data Structures & Algorithms Course Project. Designed for direct browser execution and GitHub Pages deployment.
+          Data Structures & Algorithms Course Project. Designed for direct browser execution and GitHub Pages
+          deployment.
         </p>
       </div>
     </div>
@@ -1112,4 +1223,5 @@ Final Sorted Product Prices (Ascending):
   <!-- Main JavaScript File -->
   <script src="script.js"></script>
 </body>
+
 </html>
